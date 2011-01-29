@@ -1,16 +1,13 @@
 {% extends "library/base_library.html" %}
-
+{% load library_tags %}
 
 {% block title %}{{ object.full_title }}{% endblock %}
 
 
-{% block content_title %}
-  <h2>Books</h2>
-{% endblock %}
+{% block content_title %}{% endblock %}
 
 
-{% block content %}
-  {% load markup %}
+{% block body %}
   <h3>{{ object.full_title }}
     {% if object.subtitle %}<em>{{ object.subtitle }}</em>{% endif %}</h3>
   
@@ -21,30 +18,59 @@
   {% endif %}
   
   <ul class="info_list">
-    <li>Author{{ object.authors.all|pluralize }}: {% for author in object.authors.all %}<a href="{{ author.get_absolute_url }}">{{ author.full_name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</li>
+    <li>Author: {{ book.author }}</a></li>
     <li>Publisher: <a href="{{ object.publisher.get_absolute_url }}">{{ object.publisher.full_title }}</a></li>
     <li>Released: {{ object.published|date:"d F Y" }}</li>
     <li>Pages: {{ object.pages }} {% if not object.has_read %}on page {{ object.bookmark }}{% endif %}</li>
-    <li>Genre: {% for genre in object.genre.all %}{{ genre.title }}{% if not forloop.last %}, {% endif %}{% endfor %}</li>
     <li>ISBN: {{ object.isbn }} (<a href="{{ object.amazon_url }}">Amazon</a>)</li>
   </ul>
   
   {% if object.description %}
   <div class="description">
     <h4>Description</h4>
-    {{ object.description|markdown:"safe" }}
+    <p>
+        {{ object.description }}
+    </p>
+  </div>
+  {% endif %}
+
+  {% if request.user.is_authenticated %}
+  <div class="checkout_status">
+      {% if object.is_out %}
+      <span>Out to {{ object.out_to.user }} {{ object.out_to.date|dayssince }}</span>
+      {% endif %}
   </div>
   {% endif %}
   
-  {% if object.highlight_set.all %}
-  <div class="highlights">
-    <h4>Highlights</h4>
-    {% for highlight in object.highlight_set.all %}
-    <blockquote>
-      {{ highlight.highlight|markdown:"safe" }}
-      {% if highlight.page %}<p class="source">&mdash; p. {{ highlight.page }}<p>{% endif %}
-    </blockquote>
-    {% endfor %}
+  {% if object.review_set.all %}
+  <div class="reviews">
+      {% for review in object.review_set.all %}
+      <div class="review">
+          <span>{{ review.user }}</span> {{ review.stars }} of 5
+          <dl>
+          {% if review.why_did_you_get_this_book %}
+              <dt>Why did you get this book?</dt>
+              <dd>{{ review.why_did_you_get_this_book }}</dd>
+          {% endif %}
+          {% if review.did_you_like_it %}
+              <dt>Did you Like it?</dt>
+              <dd>{{ review.did_you_like_it }}</dd>
+          {% endif %}
+          </dl>
+      </div>
+      {% endfor %}
   </div>
   {% endif %}
+  
+  {% if object.checkout_set.all %}
+  <div class="checkouts">
+      <ul>
+          <li>This Book has been checked out {{ object.checkout_set.all.count }} time{{ object.checkout_set.all.count|pluralize }}
+          {% for checkout in object.checkout_set.all %}
+          <li>{{ checkout.user }} {% if checkout.date_returned %}{{ checkout.date_returned|dayssince }}{%else%}checked out{% endif %}
+          {% endfor %}
+      </ul>
+  </div>
+  {% endif %}
+
 {% endblock %}

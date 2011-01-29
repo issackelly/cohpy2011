@@ -5,12 +5,10 @@
 {% block body_class %}{{ block.super }} book_publishers{% endblock %}
 
 
-{% block content_title %}
-  <h2>Book Publishers</h2>
-{% endblock %}
+{% block content_title %}{% endblock %}
 
 
-{% block content %}
+{% block body %}
   <h3>{{ object.full_title }}</h3>
   <ul class="link_list">
     {% for book in object.book_set.all %}

@@ -7,18 +7,17 @@
     {% block extra_head %}{% endblock %}
 {% endblock %}
 
-{% block logo_link_image %}<a href="{% url home %}"><img src="{{ STATIC_URL }}pinax/img/logo.png" alt="Pinax"/></a>{% endblock %}
+{% block site_title %}<h1><a href="{% url home %}">CohPy</a></h1>{% endblock %}
 
-{% block login %}
+{% block nav %}<nav>
+    <a href="/library/">Library</a>
+    <a href="/meetings/">Meetings</a>
     {% include "_account_bar.html" %}
-{% endblock %}
+</nav>{% endblock %}
 
 {% block footer %}
-<div class="legal">
-    {% trans "&copy; 2010 &lt;your company here&gt;" %}
-    - <a href="{% url about %}">{% trans "About" %}</a>
-    - <a href="{% url terms %}">{% trans "Terms of Service" %}</a>
-    - <a href="{% url privacy %}">{% trans "Privacy Policy" %}</a>
-    - <a href="{% url dmca %}">{% trans "DMCA Notice" %}</a>
-</div>
+    <p>
+        {% trans "&copy; 2010 CohPy and Contributors" %}
+        <a href="http://mail.python.org/mailman/listinfo/centraloh">{% trans "Mailing List" %}</a>
+    </p>
 {% endblock %}
