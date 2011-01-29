@@ -19,6 +19,7 @@ SERVE_MEDIA = DEBUG
 
 INTERNAL_IPS = [
     "127.0.0.1",
+    "98.28.23.120",
 ]
 
 ADMINS = [
@@ -148,6 +149,7 @@ INSTALLED_APPS = [
     "timezones",
     "emailconfirmation",
     "nashvegas",
+    "easy_thumbnails",
     
     # Pinax
     "pinax.apps.account",
@@ -155,6 +157,7 @@ INSTALLED_APPS = [
     
     # project
     "about",
+    "library",
 ]
 
 FIXTURE_DIRS = [
