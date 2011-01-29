@@ -1,0 +1,12 @@
+# project.txt is a pip requirements file which describes the distributions
+# required by your project to run.
+
+--requirement=base.txt
+--extra-index-url=http://dist.eldarion.com/gondor/
+
+nashvegas==0.4.1
+gondor==1.0a1.dev19
+psycopg2==2.3.2
+
+# Put project-specific requirements here.
+# See http://pip-installer.org/requirement-format.html for more information.
