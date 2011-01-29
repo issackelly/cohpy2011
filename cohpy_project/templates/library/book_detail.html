@@ -38,12 +38,17 @@
   <div class="checkout_status">
       {% if object.is_out %}
       <span>Out to {{ object.out_to.user }} {{ object.out_to.date|dayssince }}</span>
+        {% if object.out_to.user == request.user %}
+            <a href="{% url checkin object.pk object.out_to.pk "checkin" %}" rel="facebox">Checkin</a>
+        {% endif %}
+      {% else %}
+        <a href="{% url checkout object.pk %}" rel="facebox">Checkout</a>
       {% endif %}
   </div>
   {% endif %}
   
-  {% if object.review_set.all %}
   <div class="reviews">
+      <h2><a href="{% url add_review object.pk %}" rel="facebox">Leave Review</a></h2>
       {% for review in object.review_set.all %}
       <div class="review">
           <span>{{ review.user }}</span> {{ review.stars }} of 5
@@ -60,7 +65,6 @@
       </div>
       {% endfor %}
   </div>
-  {% endif %}
   
   {% if object.checkout_set.all %}
   <div class="checkouts">

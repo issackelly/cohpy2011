@@ -1,0 +1,15 @@
+{% load uni_form_tags %}
+<form action="{{ form_action|default:request.path }}" method="POST" class="uniForm">
+    {% csrf_token %}
+        {{ form|as_uni_form }}
+        <div class="buttonHolder">
+            <input type="submit"
+                    name=""
+                    value="{{ form_submit|default:"Submit" }}"
+                        class="button"
+                        id="button-id-submit"
+                    />
+        </div>
+    </fieldset>{% comment %}I know this doesn't look right in the template, but checkout templates/uni_form/uni_form.html{% endcomment %}
+    
+</form>
