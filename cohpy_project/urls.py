@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.conf.urls.defaults import *
-from django.views.generic.simple import direct_to_template, redirect_to
+from django.views.generic.simple import redirect_to
 
 from django.contrib import admin
 admin.autodiscover()
@@ -20,6 +20,9 @@ urlpatterns = patterns("",
     url(r"^meetings/", redirect_to, {"url": "http://www.meetup.com/Central-Ohio-Python-Users-Group/"}),
     url(r"^servee/", include("servee.urls")),
     url(r"^frontendadmin/", include("frontendadmin.urls")),
+    url(r"^$", "django.contrib.flatpages.views.flatpage", {"url": "/"}, name="home"),
+    url("^pages/", include("django.contrib.flatpages.urls")),
+
 )
 
 
