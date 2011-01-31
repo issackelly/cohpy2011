@@ -1,5 +1,5 @@
 {% extends "library/base_library.html" %}
-{% load library_tags frontendadmin_tags %}
+{% load library_tags frontendadmin_tags thumbnail %}
 
 {% block title %}{{ object.full_title }}{% endblock %}
 
@@ -13,17 +13,28 @@
     {% if object.subtitle %}<em>{{ object.subtitle }}</em>{% endif %}</h3>
   
   {% if object.cover %}
-  <a class="cover" href="{{ object.amazon_url }}"><img src="{{ object.cover.url }}" alt="Book cover"></a>
+  {% thumbnail object.cover 300x450 as cover %}
+  <a class="cover" href="{{ object.amazon_url }}"><img src="{{ cover.url }}" alt="Book cover"></a>
   {% else %}
   <div class="no_cover"></div>
   {% endif %}
   
   <ul class="info_list">
     <li>Author: {{ book.author }}</a></li>
+    {% if object.publisher %}
     <li>Publisher: <a href="{{ object.publisher.get_absolute_url }}">{{ object.publisher.full_title }}</a></li>
+    {% endif %}
+    {% if object.published %}
     <li>Released: {{ object.published|date:"d F Y" }}</li>
+    {% endif %}
+    
+    {% if object.pages > 0 %}
     <li>Pages: {{ object.pages }} {% if not object.has_read %}on page {{ object.bookmark }}{% endif %}</li>
+    {% endif %}
+
+    {% if object.isbn %}
     <li>ISBN: {{ object.isbn }} (<a href="{{ object.amazon_url }}">Amazon</a>)</li>
+    {% endif %}
   </ul>
   
   {% if object.description %}
