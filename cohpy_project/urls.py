@@ -20,7 +20,9 @@ urlpatterns = patterns("",
     url(r"^admin/", include(admin.site.urls)),
     url(r"^account/", include("pinax.apps.account.urls")),
     url(r"^openid/", include(PinaxConsumer().urls)),
-    url(r"^meetings/", redirect_to, {"url": "http://www.meetup.com/Central-Ohio-Python-Users-Group/"})
+    url(r"^meetings/", redirect_to, {"url": "http://www.meetup.com/Central-Ohio-Python-Users-Group/"}),
+    url(r"^servee/", include("servee.urls")),
+    url(r"^frontendadmin/", include("frontendadmin.urls")),
 )
 
 
