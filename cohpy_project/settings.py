@@ -97,6 +97,7 @@ MIDDLEWARE_CLASSES = [
     "django.middleware.common.CommonMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.flatpages.middleware.FlatpageFallbackMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django_openid.consumer.SessionConsumer",
     "django.contrib.messages.middleware.MessageMiddleware",
@@ -132,6 +133,7 @@ INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
+    "django.contrib.flatpages",
     "django.contrib.sessions",
     "django.contrib.sites",
     "django.contrib.messages",
@@ -178,7 +180,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 LOGIN_URL = "/account/login/" # @@@ any way this can be a url name?
-LOGIN_REDIRECT_URLNAME = "what_next"
+LOGIN_REDIRECT_URLNAME = "home"
 
 EMAIL_CONFIRMATION_DAYS = 2
 EMAIL_DEBUG = DEBUG
