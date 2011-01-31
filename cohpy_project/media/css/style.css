@@ -43,7 +43,7 @@ html { overflow-y: scroll; }
 
 a:hover, a:active { outline: none; }
 a, a:active, a:visited { color: #326bf8; }
-a:hover { color: #ff9a00; }
+a:hover { color: #dc8500; }
 
 ul, ol { margin-left: 1.8em; }
 ol { list-style-type: decimal; }
@@ -167,7 +167,6 @@ footer a, footer a:active, footer a:visited {
     color: #fff;
 }
 header {
-    height: 75px;
     padding: 2em;
 	background:#19326d;
     background: rgba(62,116,249,0.5);
@@ -184,6 +183,15 @@ header h1{
 header h1 a{
 	color:#fff;
 	text-decoration: none;
+}
+header ul{
+text-align: left;
+}
+header ul li{
+display:inline-block;
+vertical-align:top;
+zoom:1;
+*display:inline;
 }
 header p a{
 color:#fff;
