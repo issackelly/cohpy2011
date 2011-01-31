@@ -9,8 +9,9 @@
 
 {% block body %}
   <h3>{{ object.full_title }}
-    {% frontendadmin_change object %}
     {% if object.subtitle %}<em>{{ object.subtitle }}</em>{% endif %}</h3>
+  
+  {% frontendadmin_change object %}
   
   {% if object.cover %}
   {% thumbnail object.cover 300x450 as cover %}

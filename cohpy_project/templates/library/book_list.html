@@ -1,5 +1,5 @@
 {% extends "library/base_library.html" %}
-
+{% load frontendadmin_tags %}
 
 {% block title %}Books{% endblock %}
 
@@ -21,4 +21,5 @@
     </dd>
   {% endfor %}
   </dl>
+  {% frontendadmin_add object_list %}
 {% endblock %}
