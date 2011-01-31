@@ -102,6 +102,7 @@ MIDDLEWARE_CLASSES = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "servee.wysiwyg.middleware.WysiwygMiddleware",
     "servee.toolbar.middleware.ToolbarMiddleware",
+    "django.contrib.flatpages.middleware.FlatpageFallbackMiddleware",
     "pinax.apps.account.middleware.LocaleMiddleware",
     "pinax.middleware.security.HideSensistiveFieldsMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",

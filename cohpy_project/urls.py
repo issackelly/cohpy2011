@@ -20,9 +20,6 @@ urlpatterns = patterns("",
     url(r"^meetings/", redirect_to, {"url": "http://www.meetup.com/Central-Ohio-Python-Users-Group/"}),
     url(r"^servee/", include("servee.urls")),
     url(r"^frontendadmin/", include("frontendadmin.urls")),
-    url(r"^$", "django.contrib.flatpages.views.flatpage", {"url": "/"}, name="home"),
-    url("^pages/", include("django.contrib.flatpages.urls")),
-
 )
 
 
