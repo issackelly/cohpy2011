@@ -10,7 +10,7 @@ psycopg2==2.3.2
 easy-thumbnails
 
 # Servee
-BeautifulSoup
+BeautifulSoup==3.2.0
 -e git+https://github.com/issackelly/django-frontendadmin.git#egg=django_frontendadmin
 django-improved-inlines
 django-treebeard
