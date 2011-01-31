@@ -1,5 +1,5 @@
 {% extends "library/base_library.html" %}
-
+{% load frontendadmin_tags %}
 
 {% block title %}{{ object.full_title }}{% endblock %}
 {% block body_class %}{{ block.super }} book_publishers{% endblock %}
@@ -9,10 +9,10 @@
 
 
 {% block body %}
-  <h3>{{ object.full_title }}</h3>
-  <ul class="link_list">
-    {% for book in object.book_set.all %}
-    <li><a href="{{ book.get_absolute_url }}">{{ book.full_title }}</a></li>
-    {% endfor %}
+  <ul>
+      {% for object in object_list %}
+      <li><a href="{{object.get_absolute_url}}">{{ object.full_title }}</a>
+      {% endfor %}
   </ul>
+  {% frontendadmin_add object_list %}
 {% endblock %}

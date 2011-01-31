@@ -1,5 +1,5 @@
 {% extends "library/base_library.html" %}
-
+{% load frontendadmin_tags %}
 
 {% block title %}Books{% endblock %}
 
@@ -16,9 +16,10 @@
     <dd>
       <strong>{{ book.author }} <a href="{{ book.publisher.get_absolute_url }}">{{ book.publisher.full_title }}</a></strong>
       <p>
-          {{ book.description|truncatewords:30 }}
+          {{ book.description|safe|truncatewords_html:30 }}
       </p>
     </dd>
   {% endfor %}
   </dl>
+  {% frontendadmin_add object_list %}
 {% endblock %}
