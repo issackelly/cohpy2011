@@ -100,6 +100,8 @@ MIDDLEWARE_CLASSES = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django_openid.consumer.SessionConsumer",
     "django.contrib.messages.middleware.MessageMiddleware",
+    "servee.wysiwyg.middleware.WysiwygMiddleware",
+    "servee.toolbar.middleware.ToolbarMiddleware",
     "pinax.apps.account.middleware.LocaleMiddleware",
     "pinax.middleware.security.HideSensistiveFieldsMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
@@ -142,7 +144,6 @@ INSTALLED_APPS = [
     # external
     "staticfiles",
     "debug_toolbar",
-    "mailer",
     "uni_form",
     "django_openid",
     "ajax_validation",
@@ -150,6 +151,24 @@ INSTALLED_APPS = [
     "emailconfirmation",
     "nashvegas",
     "easy_thumbnails",
+    
+    # servee reqs
+    "improved_inlines",
+    "frontendadmin",
+    "tagging",
+    "treebeard",
+    
+    # servee
+    "servee",
+    "servee.wysiwyg",
+    "servee.wysiwyg.tinymce",
+    "servee.toolbar",
+    "servee.contrib.media.image",
+    "servee.contrib.media.video",
+    "servee.contrib.media.document",
+    "servee.contrib.media.gallery",
+    "servee.contrib.tools.gallery",
+    "servee.contrib.navigation",
     
     # Pinax
     "pinax.apps.account",
@@ -164,8 +183,6 @@ FIXTURE_DIRS = [
 ]
 
 MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
-
-EMAIL_BACKEND = "mailer.backend.DbBackend"
 
 ACCOUNT_OPEN_SIGNUP = True
 ACCOUNT_REQUIRED_EMAIL = False
