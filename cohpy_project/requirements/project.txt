@@ -11,6 +11,3 @@ easy-thumbnails
 
 # Servee
 -e git+git://github.com/servee/servee.git@feature/replace_frontendadmin#egg=django_servee
-
-# Put project-specific requirements here.
-# See http://pip-installer.org/requirement-format.html for more information.

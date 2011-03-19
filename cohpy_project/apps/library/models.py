@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.db.models import permalink
 from easy_thumbnails.fields import ThumbnailerImageField
+import datetime
 
 class Book(models.Model):
     """Listing of books"""
@@ -92,7 +93,7 @@ class Publisher(models.Model):
         return ('book_publisher_detail', None, { 'slug':self.slug })
 
 class Checkout(models.Model):
-    date = models.DateField()
+    date = models.DateField(default=datetime.datetime.now())
     user = models.ForeignKey(User)
     date_returned = models.DateField(blank=True, null=True)
     book = models.ForeignKey(Book)
@@ -110,4 +111,4 @@ class Review(models.Model):
     book = models.ForeignKey(Book)
     why_did_you_get_this_book = models.TextField(blank=True, null=True)
     did_you_like_it = models.TextField(blank=True, null=True)
-    stars = models.IntegerField(default=3, choices=CHOICES)
+    stars = models.IntegerField(choices=CHOICES)
