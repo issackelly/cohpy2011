@@ -79,6 +79,11 @@ STATICFILES_DIRS = [
     os.path.join(PINAX_ROOT, "media", PINAX_THEME),
 ]
 
+STATICFILES_MEDIA_DIRNAMES = (
+    'media',
+    'static',
+)
+
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
@@ -156,6 +161,7 @@ INSTALLED_APPS = [
     "tagging",
     
     # servee
+    "servee",
     "servee.frontendadmin",
     "servee.wysiwyg",
     "servee.wysiwyg.tinymce",
@@ -166,6 +172,7 @@ INSTALLED_APPS = [
     
     # project
     "library",
+    "servee_flatpages",
 ]
 
 FIXTURE_DIRS = [
