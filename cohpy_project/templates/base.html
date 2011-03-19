@@ -27,6 +27,10 @@
 
         <script src="{{ STATIC_URL }}js/modernizr-1.6.min.js"></script>
         
+        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.5.1.min.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}servee/js/frontendadmin.js"></script>
+        {% include "wysiwyg/_wysiwyg_of_choice.html" %}
+        
         {% if LANGUAGE_BIDI %}
         <style type="text/css" media="screen">
             div.right_panel {

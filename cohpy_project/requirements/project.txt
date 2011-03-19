@@ -5,7 +5,7 @@
 --extra-index-url=http://dist.eldarion.com/gondor/
 
 nashvegas==0.4.1
-gondor==1.0a1.dev20
+gondor==1.0a1.dev25
 psycopg2==2.3.2
 easy-thumbnails
 
