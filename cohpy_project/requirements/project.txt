@@ -10,15 +10,7 @@ psycopg2==2.3.2
 easy-thumbnails
 
 # Servee
-BeautifulSoup
--e git+https://github.com/issackelly/django-frontendadmin.git#egg=django_frontendadmin
-django-improved-inlines
-django-treebeard
-django-tagging
-
-
-
--e git+git://github.com/servee/servee.git#egg=django_servee
+-e git+git://github.com/servee/servee.git@feature/replace_frontendadmin#egg=django_servee
 
 # Put project-specific requirements here.
 # See http://pip-installer.org/requirement-format.html for more information.

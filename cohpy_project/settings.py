@@ -100,8 +100,6 @@ MIDDLEWARE_CLASSES = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django_openid.consumer.SessionConsumer",
     "django.contrib.messages.middleware.MessageMiddleware",
-    "servee.wysiwyg.middleware.WysiwygMiddleware",
-    "servee.toolbar.middleware.ToolbarMiddleware",
     "pinax.apps.account.middleware.LocaleMiddleware",
     "pinax.middleware.security.HideSensistiveFieldsMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
@@ -153,22 +151,12 @@ INSTALLED_APPS = [
     "easy_thumbnails",
     
     # servee reqs
-    "improved_inlines",
-    "frontendadmin",
     "tagging",
-    "treebeard",
     
     # servee
-    "servee",
+    "servee.frontendadmin",
     "servee.wysiwyg",
     "servee.wysiwyg.tinymce",
-    "servee.toolbar",
-    "servee.contrib.media.image",
-    "servee.contrib.media.video",
-    "servee.contrib.media.document",
-    "servee.contrib.media.gallery",
-    "servee.contrib.tools.gallery",
-    "servee.contrib.navigation",
     
     # Pinax
     "pinax.apps.account",
@@ -195,7 +183,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 LOGIN_URL = "/account/login/" # @@@ any way this can be a url name?
-LOGIN_REDIRECT_URLNAME = "what_next"
+LOGIN_REDIRECT_URL = "/"
 
 EMAIL_CONFIRMATION_DAYS = 2
 EMAIL_DEBUG = DEBUG

@@ -5,6 +5,9 @@ from django.views.generic.simple import direct_to_template, redirect_to
 from django.contrib import admin
 admin.autodiscover()
 
+from servee import frontendadmin
+frontendadmin.autodiscover()
+
 from pinax.apps.account.openid_consumer import PinaxConsumer
 
 
@@ -21,8 +24,7 @@ urlpatterns = patterns("",
     url(r"^account/", include("pinax.apps.account.urls")),
     url(r"^openid/", include(PinaxConsumer().urls)),
     url(r"^meetings/", redirect_to, {"url": "http://www.meetup.com/Central-Ohio-Python-Users-Group/"}),
-    url(r"^servee/", include("servee.urls")),
-    url(r"^frontendadmin/", include("frontendadmin.urls")),
+    url(r"^servee/", include(frontendadmin.site.urls)),
 )
 
 
